@@ -23,7 +23,7 @@ def _load_image_into_numpy_array(data):
     return np.array(img)
 
 def _load_dict_tokens():
-    if not settings.TOKENS:
+    if not isinstance(settings.TOKENS, np.ndarray):
         path_tokens = f'{settings.FILES_PATH}/all_tokens.npy'
         with open(path_tokens, 'rb') as f:
             all_tokens = np.load(f, allow_pickle=True)
